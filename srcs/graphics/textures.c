@@ -6,9 +6,11 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:43:29 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/02 16:44:17 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:29:47 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	load_textures(t_game *game);
-void	free_textures(t_game *game);
+#include "../../includes/so_long.h"
+
+// void	load_textures(t_game *game);
+// void	free_textures(t_game *game);

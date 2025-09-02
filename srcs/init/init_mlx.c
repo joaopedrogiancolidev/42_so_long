@@ -6,8 +6,10 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:41:42 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/02 16:42:05 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:30:05 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	init_mlx(t_game *game);
+
+#include "../../includes/so_long.h"
+//void	init_mlx(t_game *game);

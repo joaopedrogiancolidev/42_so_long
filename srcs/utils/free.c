@@ -6,9 +6,11 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:46:55 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/02 16:47:20 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:31:07 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    free_map(t_map *map);
-void    free_game(t_game *game);
+#include "../../includes/so_long.h"
+
+// void    free_map(t_map *map);
+// void    free_game(t_game *game);

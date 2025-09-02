@@ -6,10 +6,12 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 16:42:16 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/02 16:43:22 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/02 17:29:41 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		render_frame(t_game *game);
-void	render_map(t_game *game);
-void	render_player(t_game *game);
+#include "../../includes/so_long.h"
+
+// int		render_frame(t_game *game);
+// void	render_map(t_game *game);
+// void	render_player(t_game *game);
