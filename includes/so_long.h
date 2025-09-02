@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 17:07:10 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/02 17:27:17 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/02 19:44:13 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux-master/minilibx-linux-master/mlx.h"
+# include "../get_next_line/get_next_line.h"
 
 typedef struct s_position {
     int x;
@@ -47,16 +48,25 @@ typedef struct s_game {
 // Funções principais
 t_game	init_game(char *map_file);
 void	start_game(t_game *game);
+void	init_mlx(t_game *game);
 
-// Map functions
+// Funções de mapa
 t_map	parse_map(char *filename);
 int		validate_map(t_map *map);
+int		is_map_rectangular(t_map *map);
+int		is_map_closed(t_map *map);
+int		has_valid_path(t_map *map);
 
-void	flood_fill(t_map *map, int x, int y, int *collectibles, int *exit);
+// Funções utilitárias
+int		count_char(char *str, char c);
+void	find_positions(t_map *map, char *line, int row);
 
+//Graphics
+int render_frame(t_game *game);
 
 // Error handling
 void	throw_error(char *message);
 void	clean_exit(t_game *game, int exit_code);
+
 
 #endif

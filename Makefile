@@ -13,24 +13,28 @@ OBJ_DIR		= objs
 INC_DIR		= includes
 LIBFT_DIR	= libft
 MLX_DIR		= minilibx-linux
+GNL_DIR 	= get_next_line
 
 # Arquivos fonte
-SRCS		= $(SRC_DIR)/main.c \
-			  $(SRC_DIR)/init/init_game.c \
-			  $(SRC_DIR)/init/init_mlx.c \
-			  $(SRC_DIR)/map/parse_map.c \
-			  $(SRC_DIR)/map/validate_map.c \
-			  $(SRC_DIR)/map/flood_fill.c \
-			  $(SRC_DIR)/graphics/render.c \
-			  $(SRC_DIR)/graphics/textures.c \
-			  $(SRC_DIR)/game/movement.c \
-			  $(SRC_DIR)/game/collectibles.c \
-			  $(SRC_DIR)/game/game_state.c \
-			  $(SRC_DIR)/utils/errors.c \
-			  $(SRC_DIR)/utils/free.c \
-			  $(SRC_DIR)/utils/utils.c
+SRCS		= srcs/main.c \
+			  srcs/init/init_game.c \
+			  srcs/init/init_mlx.c \
+			  srcs/map/parse_map.c \
+			  srcs/map/validate_map.c \
+			  srcs/map/flood_fill.c \
+			  srcs/graphics/render.c \
+			  srcs/graphics/textures.c \
+			  srcs/game/movement.c \
+			  srcs/game/collectibles.c \
+			  srcs/game/game_state.c \
+			  srcs/utils/errors.c \
+			  srcs/utils/free.c \
+			  srcs/utils/utils.c \
+			  get_next_line/get_next_line.c \
+			  get_next_line/get_next_line_utils.c
 
-OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# OBJETOS CORRETO:
+OBJS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Cores para output
 GREEN		= \033[0;32m
@@ -64,10 +68,10 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
 	@echo "$(GREEN)✅ $(NAME) compilado com sucesso!$(RESET)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	@echo "$(YELLOW)🔨 Compilando $<...$(RESET)"
-	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(GNL_DIR) -c $< -o $@
 
 libft:
 	@echo "$(BLUE)📚 Compilando libft...$(RESET)"
