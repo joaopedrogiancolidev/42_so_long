@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/03 00:07:01 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:15:27 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "../../libft/libft.h"
-# include "../../libft/get_next_line.h"
+# include "../../ft_printf/includes/ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:31:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/03 01:02:06 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:18:17 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,15 @@ t_map parse_map(char *filename)
 
 void print_map_info(t_map *map)
 {
-    printf("🗺️  Map Info:\n");
-    printf("   Size: %dx%d\n", map->width, map->height);
-    printf("   Collectibles: %d\n", map->collectibles);
-    printf("   Exits: %d\n", map->exits);
-    printf("   Players: %d\n", map->players);
+    ft_printf("🗺️  Map Info:\n");
+    ft_printf("   Size: %dx%d\n", map->width, map->height);
+    ft_printf("   Collectibles: %d\n", map->collectibles);
+    ft_printf("   Exits: %d\n", map->exits);
+    ft_printf("   Players: %d\n", map->players);
     
-    printf("   Grid:\n");
+    ft_printf("   Grid:\n");
     for (int y = 0; y < map->height; y++)
     {
-        printf("      %s\n", map->grid[y]);
+        ft_printf("      %s\n", map->grid[y]);
     }
 }
