@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 16:46:08 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:31:21 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../../libft/libft.h"
 # include "../../ft_printf/includes/ft_printf.h"
+# include "../../minilibx/mlx.h" 
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -41,6 +42,13 @@ typedef struct s_map
 	t_position	*enemy_pos;
 }	t_map;
 
+typedef struct s_game
+{
+    void    *mlx;
+    void    *window;
+    t_map   *map;
+} t_game;
+
 //map parser
 t_map	parse_map(char *filename);
 void	print_map_info(t_map *map);
@@ -59,5 +67,8 @@ void	validate_entities(t_map *map);
 void	validate_borders(t_map *map);
 void	find_positions(t_map *map);
 void	validate_path(t_map *map);
+
+//graphics
+int		init_graphics(t_game *game, t_map *map);
 
 #endif

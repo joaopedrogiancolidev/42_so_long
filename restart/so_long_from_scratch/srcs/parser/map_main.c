@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 17:51:06 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:30:58 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_map	map;
+	t_game	game;
 
 	if (argc != 2)
 	{
@@ -25,8 +26,15 @@ int	main(int argc, char **argv)
 	map = parse_map(argv[1]);
 	validate_map(&map);
 	print_map_info(&map);
+
+	if (!init_graphics(&game, &map))
+	{
+		free_map(&map);
+		throw_error("Failed to initialize graphics...");
+	}
 	ft_printf("🏁Map loaded sucessfully! \n");
 	ft_printf("   Size: %dx%d\n", map.width, map.height);
+	mlx_loop(game.mlx);
 	//free_map(&map);
 	return (0);
 }

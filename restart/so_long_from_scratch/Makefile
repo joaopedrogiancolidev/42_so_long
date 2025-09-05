@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = ../libft
 FT_PRINTF_DIR = ../ft_printf
+MLX_DIR = ../minilibx
 INC_DIR = includes
 
 SRC = 	srcs/parser/map_main.c \
@@ -17,7 +18,8 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/validation/validate_chars.c \
 		srcs/validation/validate_entities.c \
 		srcs/validation/find_positions.c \
-		srcs/validation/validate_path.c 
+		srcs/validation/validate_path.c  \
+		srcs/graphics/init_graphics.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -26,11 +28,11 @@ all: libs $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "🖋️Linkando $(NAME)..."
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 %.o: %.c
 	@echo "🚧 Compilando $<...."
-	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR)  -c $< -o $@
 
 libs:
 	@echo "🥌Compilando libft"
