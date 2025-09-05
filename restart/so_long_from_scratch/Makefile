@@ -35,15 +35,17 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR)  -c $< -o $@
 
 libs:
-	@echo "🥌Compilando libft"
-	$(MAKE) -C $(LIBFT_DIR)
+	@echo "🥌  Compilando libft"
+	$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo "🖨️  Compilando ft_printf..."
-	$(MAKE) -C $(FT_PRINTF_DIR)
-
+	$(MAKE) -C $(FT_PRINTF_DIR) --no-print-directory
+	@echo "🦜  Compilando MiniLibX..."
+	$(MAKE) -C $(MLX_DIR) --no-print-directory
 clean:
 	rm -f $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(FT_PRINTF_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)

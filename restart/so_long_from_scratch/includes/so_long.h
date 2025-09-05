@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 18:31:21 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:40:33 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ typedef struct s_map
 
 typedef struct s_game
 {
-    void    *mlx;
-    void    *window;
-    t_map   *map;
-} t_game;
+	void	*mlx;
+	void	*window;
+	t_map	*map;
+}	t_game;
 
 //map parser
 t_map	parse_map(char *filename);

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 18:30:58 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:41:34 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	map = parse_map(argv[1]);
 	validate_map(&map);
 	print_map_info(&map);
-
 	if (!init_graphics(&game, &map))
 	{
 		free_map(&map);
