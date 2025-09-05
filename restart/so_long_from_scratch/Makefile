@@ -8,8 +8,10 @@ LIBFT_DIR = ../libft
 FT_PRINTF_DIR = ../ft_printf
 INC_DIR = includes
 
-SRC = srcs/main.c \
-		srcs/map_parser.c
+SRC = 	srcs/parser/map_main.c \
+		srcs/parser/map_parser.c \
+		srcs/parser/map_struct.c \
+		srcs/parser/map_fill.c
 OBJ = $(SRC:.c=.o)
 
 
@@ -21,7 +23,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	@echo "🚧 Compilando $<...."
-	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -c $< -o $@
 
 libs:
 	@echo "🥌Compilando libft"

@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/03 16:21:32 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/05 13:39:27 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/05 14:07:43 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(int argc, char **argv)
+void	throw_error(char *message)
 {
-    t_map map;
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
+}
 
-    if (argc != 2)
-    {
-        ft_printf("Usage: %s <map_file.ber>\n", argv[0]);
-        return (1);
-    }
+t_map	init_map_struct(void)
+{
+	t_map	map;
 
-     ft_printf("🍳 Inicializing So Long...\n");
-
-     map = parse_map(argv[1]);
-     print_map_info(&map);
-
-     ft_printf("🏁Map loaded sucessfully! \n");
-     return (0);
+	map.grid = NULL;
+	map.width = 0;
+	map.height = 0;
+	map.collectibles = 0;
+	map.exits = 0;
+	map.players = 0;
+	map.player_pos.x = 0;
+	map.player_pos.y = 0;
+	map.exit_pos.x = 0;
+	map.exit_pos.y = 0;
+	return (map);
 }
