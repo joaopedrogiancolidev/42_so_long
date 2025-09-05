@@ -11,7 +11,12 @@ INC_DIR = includes
 SRC = 	srcs/parser/map_main.c \
 		srcs/parser/map_parser.c \
 		srcs/parser/map_struct.c \
-		srcs/parser/map_fill.c
+		srcs/parser/map_fill.c \
+		srcs/validation/map_validation.c \
+		srcs/validation/validate_borders.c \
+		srcs/validation/validate_chars.c \
+		srcs/validation/validate_entities.c
+
 OBJ = $(SRC:.c=.o)
 
 

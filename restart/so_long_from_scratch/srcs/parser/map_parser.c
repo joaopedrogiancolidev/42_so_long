@@ -6,11 +6,11 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:31:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 13:40:00 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:01:20 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 t_map	parse_map(char *filename)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_struct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:39:27 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 14:07:43 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 15:18:38 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 void	throw_error(char *message)
 {
@@ -30,9 +30,33 @@ t_map	init_map_struct(void)
 	map.collectibles = 0;
 	map.exits = 0;
 	map.players = 0;
+	map.enemies = 0;
 	map.player_pos.x = 0;
 	map.player_pos.y = 0;
 	map.exit_pos.x = 0;
 	map.exit_pos.y = 0;
+	map.enemy_pos = NULL;
 	return (map);
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	if (map->grid)
+	{
+		i = 0;
+		while (i < map->height)
+		{
+			free(map->grid[i]);
+			i++;
+		}
+		free(map->grid);
+		map->grid = NULL;
+	}
+	if (map->enemy_pos)
+	{
+		free(map->enemy_pos);
+		map->enemy_pos = NULL;
+	}
 }

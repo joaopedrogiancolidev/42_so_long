@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_main.c                                         :+:      :+:    :+:   */
+/*   validate_chars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 15:34:36 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/05 15:07:22 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/05 15:59:26 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	main(int argc, char **argv)
+void	validate_characters(t_map *map)
 {
-	t_map	map;
+	int		y;
+	int		x;
 
-	if (argc != 2)
+	y = 0;
+	while (y < map->height)
 	{
-		ft_printf("Maps avaliables: %s <map_file.ber>\n", argv[0]);
-		return (1);
+		x = 0;
+		while (x < map->width)
+		{
+			if (!ft_strchr("01PECM", map->grid[y][x]))
+				throw_error("Invalid character in map");
+			x++;
+		}
+		y++;
 	}
-	ft_printf("🍳 Inicializing So Long...\n");
-	map = parse_map(argv[1]);
-	validate_map(&map);
-	print_map_info(&map);
-	ft_printf("🏁Map loaded sucessfully! \n");
-	ft_printf("   Size: %dx%d\n", map.width, map.height);
-	//free_map(&map);
-	return (0);
 }
