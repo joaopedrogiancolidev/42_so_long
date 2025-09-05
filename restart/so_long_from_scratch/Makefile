@@ -15,7 +15,9 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/validation/map_validation.c \
 		srcs/validation/validate_borders.c \
 		srcs/validation/validate_chars.c \
-		srcs/validation/validate_entities.c
+		srcs/validation/validate_entities.c \
+		srcs/validation/find_positions.c \
+		srcs/validation/validate_path.c 
 
 OBJ = $(SRC:.c=.o)
 

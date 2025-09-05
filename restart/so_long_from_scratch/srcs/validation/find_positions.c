@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_chars.c                                   :+:      :+:    :+:   */
+/*   find_positions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 15:07:22 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 16:11:13 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/05 16:24:26 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/05 17:52:39 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void	validate_characters(t_map *map)
+void	find_positions(t_map *map)
 {
 	int		y;
 	int		x;
@@ -23,8 +23,16 @@ void	validate_characters(t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			if (!ft_strchr("01PECM", map->grid[y][x]))
-				throw_error("Invalid character in map");
+			if (map->grid[y][x] == 'P')
+			{
+				map->player_pos.x = x;
+				map->player_pos.y = y;
+			}
+			else if (map->grid[y][x] == 'E')
+			{
+				map->exit_pos.x = x;
+				map->exit_pos.y = y;
+			}
 			x++;
 		}
 		y++;

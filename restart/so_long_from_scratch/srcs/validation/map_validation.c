@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 14:59:08 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 15:07:28 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 16:49:48 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@ void	validate_map(t_map *map)
 	validate_characters(map);
 	validate_entities(map);
 	validate_borders(map);
-	//validate_path(map);
+	find_positions(map);
+	validate_path(map);
 }

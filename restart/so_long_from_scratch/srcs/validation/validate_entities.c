@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:27:32 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 16:01:36 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:54:34 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@ static void	validate_entities_count(t_map *map)
 		throw_error("Map must have at least one collectible");
 }
 
-void	validate_entities(t_map *map)
+static void	count_entities(t_map *map)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
-	map->players = 0;
-	map->exits = 0;
-	map->collectibles = 0;
-	map->enemies = 0;
 	y = 0;
 	while (y < map->height)
 	{
@@ -49,4 +45,14 @@ void	validate_entities(t_map *map)
 		}
 		y++;
 	}
+}
+
+void	validate_entities(t_map *map)
+{
+	map->players = 0;
+	map->exits = 0;
+	map->collectibles = 0;
+	map->enemies = 0;
+	count_entities(map);
+	validate_entities_count(map);
 }
