@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/06 23:29:03 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/06 23:59:13 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ int	main(int argc, char **argv)
 		throw_error("Failed to initialize graphics...");
 	}
 	load_textures(&game);
-	render_map(&game);
+	//render_map(&game);
+	render_static_map(&game);
+	render_animated_entities(&game, 0);
 	ft_printf("🏁Map loaded sucessfully! \n");
 	ft_printf("   Size: %dx%d\n", map.width, map.height);
+	mlx_loop_hook(game.mlx, animate_game, &game);
 	mlx_hook(game.window, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	//free_map(&map);

@@ -21,8 +21,8 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/validation/validate_path.c  \
 		srcs/graphics/init_graphics.c \
 		srcs/graphics/load_textures.c \
-		srcs/graphics/test_textures.c \
-		srcs/graphics/render_map.c 
+		srcs/graphics/render_map.c \
+		srcs/graphics/animate.c
 
 OBJ = $(SRC:.c=.o)
 
