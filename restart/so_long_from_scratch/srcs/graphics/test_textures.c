@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_graphics.c                                    :+:      :+:    :+:   */
+/*   test_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 18:25:09 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/06 21:25:52 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/06 20:53:16 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/06 20:53:31 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	init_graphics(t_game *game, t_map *map)
+void	test_textures(t_game *game)
 {
-	game->map = map;
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (0);
-	game->window = mlx_new_window(game->mlx,
-			map->width * TILE_SIZE,
-			map->height * TILE_SIZE,
-			"So_long project");
-	ft_printf("🎨 Window Openned!\n");
-	return (1);
+	ft_printf("🧪 Testing texture rendering...\n");
+	
+	// Teste UMA textura de cada vez
+	if (mlx_put_image_to_window(game->mlx, game->window, 
+		game->textures.floor, 0, 0) == 0)
+	{
+		ft_printf("❌ mlx_put_image_to_window FAILED immediately!\n");
+		return;
+	}
+	ft_printf("✅ Floor texture rendered successfully!\n");
+	
+	// Adicone um pequeno delay para ver
+	sleep(1);
 }

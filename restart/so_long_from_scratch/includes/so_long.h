@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 18:40:33 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/06 21:19:37 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,28 @@ typedef struct s_map
 	t_position	*enemy_pos;
 }	t_map;
 
+//asset textures
+
+typedef struct	s_textures
+{
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*collectible;
+	void	*enemies;
+	void	*exit;
+}	t_textures;
+
+//mlx structures
+
+#define TILE_SIZE 64
+
 typedef struct s_game
 {
-	void	*mlx;
-	void	*window;
-	t_map	*map;
+	void		*mlx;
+	void		*window;
+	t_map		*map;
+	t_textures	textures;
 }	t_game;
 
 //map parser
@@ -68,7 +85,11 @@ void	validate_borders(t_map *map);
 void	find_positions(t_map *map);
 void	validate_path(t_map *map);
 
-//graphics
+//mlx and graphics
 int		init_graphics(t_game *game, t_map *map);
+void	load_textures(t_game *game);
+void	render_map(t_game *game);
+
+void	test_textures(t_game *game);
 
 #endif

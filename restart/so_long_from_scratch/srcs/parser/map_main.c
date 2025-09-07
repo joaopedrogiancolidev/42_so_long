@@ -6,11 +6,18 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/05 18:41:34 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/06 21:19:16 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+int	close_game(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->window);
+	exit(0);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -22,7 +29,7 @@ int	main(int argc, char **argv)
 		ft_printf("Maps avaliables: %s <map_file.ber>\n", argv[0]);
 		return (1);
 	}
-	ft_printf("🍳 Inicializing So Long...\n");
+	ft_printf("🍳 Initializing So Long...\n");
 	map = parse_map(argv[1]);
 	validate_map(&map);
 	print_map_info(&map);
@@ -31,9 +38,14 @@ int	main(int argc, char **argv)
 		free_map(&map);
 		throw_error("Failed to initialize graphics...");
 	}
+	load_textures(&game);
+	//test_textures(&game);
+	render_map(&game);
 	ft_printf("🏁Map loaded sucessfully! \n");
 	ft_printf("   Size: %dx%d\n", map.width, map.height);
+	mlx_hook(game.window, 17, 0, close_game, &game);  // ← Evento de fechar janela
 	mlx_loop(game.mlx);
 	//free_map(&map);
+	ft_printf("✅ Program completed without mlx_loop\n");
 	return (0);
 }

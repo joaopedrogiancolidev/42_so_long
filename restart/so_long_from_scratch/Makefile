@@ -19,7 +19,10 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/validation/validate_entities.c \
 		srcs/validation/find_positions.c \
 		srcs/validation/validate_path.c  \
-		srcs/graphics/init_graphics.c
+		srcs/graphics/init_graphics.c \
+		srcs/graphics/load_textures.c \
+		srcs/graphics/test_textures.c \
+		srcs/graphics/render_map.c 
 
 OBJ = $(SRC:.c=.o)
 
