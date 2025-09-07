@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/06 21:19:16 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/06 23:29:03 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ int	main(int argc, char **argv)
 		throw_error("Failed to initialize graphics...");
 	}
 	load_textures(&game);
-	//test_textures(&game);
 	render_map(&game);
 	ft_printf("🏁Map loaded sucessfully! \n");
 	ft_printf("   Size: %dx%d\n", map.width, map.height);
-	mlx_hook(game.window, 17, 0, close_game, &game);  // ← Evento de fechar janela
+	mlx_hook(game.window, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	//free_map(&map);
 	ft_printf("✅ Program completed without mlx_loop\n");
