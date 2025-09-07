@@ -6,20 +6,20 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 18:04:59 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/07 18:32:45 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
+# include "../../libft/libft.h"
+# include "../../ft_printf/includes/ft_printf.h"
+# include "../../minilibx/mlx.h" 
 # include <stdio.h>
-# include "../libft/libft.h"
-# include "../minilibx-linux-master/minilibx-linux-master/mlx.h"
-# include "../get_next_line/get_next_line.h"
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 // Constantes do jogo
 # define TILE_SIZE 64
@@ -43,10 +43,10 @@ typedef struct s_position {
 typedef struct s_textures {
     void *wall;
     void *floor;
-    void *player[2];      // Animação do player
-    void *collectible[2]; // Animação dos collectibles
+    void *player[2];
+    void *collectible[2];
     void *exit;
-    void *enemies[2];     // Animação dos inimigos
+    void *enemies[2];
 } t_textures;
 
 typedef struct s_map {

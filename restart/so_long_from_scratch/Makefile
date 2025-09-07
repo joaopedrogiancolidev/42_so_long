@@ -22,7 +22,9 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/graphics/init_graphics.c \
 		srcs/graphics/load_textures.c \
 		srcs/graphics/render_map.c \
-		srcs/graphics/animate.c
+		srcs/graphics/animate.c \
+		srcs/gameplay/cleanup.c \
+		srcs/gameplay/gameplay.c
 
 OBJ = $(SRC:.c=.o)
 
