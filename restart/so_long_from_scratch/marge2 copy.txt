@@ -16,6 +16,9 @@ restart----ft_printf(contem get_next_line)
                 I                 I
                 I                 I----------------parser-------map_fill.c, map_main.c, map_parser.c, map_struct.c
                 I                 I
-                I                 I-----------------validation----find_positions.c,map_validation.c,validate_borders.c, validate_chars.c, validate_entities.c, validate_path.c
+                I                 I----------------validation----find_positions.c,map_validation.c,validate_borders.c, validate_chars.c, validate_entities.c, validate_path.c
+                I                 I
+                I                 I----------------gameplay------cleanup.c,enemy_movement.c,gameplay.c
+                I 
                 I
                 I----------Makefile

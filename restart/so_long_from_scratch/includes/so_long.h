@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 18:32:45 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:39:34 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_position {
     int y;
 } t_position;
 
+typedef struct s_enemy {
+    t_position pos;
+    int direction;      // 0=direita, 1=esquerda, 2=baixo, 3=cima
+    int movement_type;  // 0=horizontal, 1=vertical
+} t_enemy;
+
 typedef struct s_textures {
     void *wall;
     void *floor;
@@ -59,7 +65,8 @@ typedef struct s_map {
     int enemies;
     t_position player_pos;
     t_position exit_pos;
-    t_position *enemy_pos;
+    t_position *enemy_pos;      // Manter para compatibilidade
+    t_enemy *enemies_data;      // 🆕 Novos dados dos inimigos
 } t_map;
 
 typedef struct s_game {
@@ -112,6 +119,13 @@ int is_valid_move(t_game *game, int x, int y);
 void collect_item(t_game *game, int x, int y);
 void check_win_condition(t_game *game);
 void display_move_count(t_game *game);
+
+// ===== SISTEMA DE INIMIGOS =====
+void init_enemies(t_game *game);
+void move_enemies(t_game *game);
+int can_enemy_move(t_game *game, int x, int y);
+void move_single_enemy(t_game *game, int enemy_index);
+void check_player_collision(t_game *game);
 
 // ===== SISTEMA =====
 int close_game(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:14:57 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 19:02:04 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:31:36 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	is_valid_move(t_game *game, int x, int y)
 	{
 		ft_printf("💀 Game Over! Você foi pego por um inimigo!\n");
 		game->game_over = 1;
+		return (0);
+	}
+	if (game->map->grid[y][x] == 'E' && game->map->collectibles > 0)
+	{
+		ft_printf("🚪 Você precisa coletar todos os itens antes de sair! (%d restantes)\n", 
+			game->map->collectibles);
 		return (0);
 	}
 	return (1);
@@ -52,6 +58,7 @@ void	check_win_condition(t_game *game)
 	{
 		ft_printf("🏆 PARABÉNS! Você venceu em %d movimentos!\n", game->moves);
 		game->game_over = 1;
+		close_game(game);
 	}
 }
 

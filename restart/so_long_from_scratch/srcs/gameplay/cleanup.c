@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:53:52 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 19:00:00 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/07 20:50:38 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,40 +73,46 @@ void	cleanup_textures(t_game *game)
 	}
 }
 
-void	cleanup_game(t_game *game)
+void cleanup_game(t_game *game)
 {
-	if (!game)
-		return;
+    if (!game)
+        return;
 
-	ft_printf("🧽 Iniciando limpeza completa do jogo...\n");
+    ft_printf("🧽 Iniciando limpeza completa do jogo...\n");
 
-	// Limpa texturas primeiro
-	cleanup_textures(game);
+    // Clean enemies data BEFORE freeing map
+    if (game->map && game->map->enemies_data)
+    {
+        free(game->map->enemies_data);
+        game->map->enemies_data = NULL;
+    }
 
-	// Destroi janela se existir
-	if (game->window && game->mlx)
-	{
-		mlx_destroy_window(game->mlx, game->window);
-		game->window = NULL;
-		ft_printf("🪟 Janela destruída\n");
-	}
+    // Clean textures
+    cleanup_textures(game);
 
-	// Limpa MLX (comentado pois pode causar crash em alguns sistemas)
-	// if (game->mlx)
-	// {
-	//     mlx_destroy_display(game->mlx);
-	//     free(game->mlx);
-	//     game->mlx = NULL;
-	// }
+    // Destroy window
+    if (game->window && game->mlx)
+    {
+        mlx_destroy_window(game->mlx, game->window);
+        game->window = NULL;
+    }
 
-	// Limpa mapa se alocado
-	if (game->map)
-	{
-		free_map(game->map);
-		ft_printf("🗺️  Mapa limpo\n");
-	}
+    // Clean map
+    if (game->map)
+    {
+        free_map(game->map);
+        game->map = NULL; // Set to NULL after freeing
+    }
 
-	ft_printf("✅ Limpeza completa finalizada\n");
+    // Clean MLX
+    if (game->mlx)
+    {
+        mlx_destroy_display(game->mlx);
+        free(game->mlx);
+        game->mlx = NULL;
+    }
+
+    ft_printf("✅ Limpeza completa finalizada\n");
 }
 
 int	close_game(t_game *game)
