@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:53:52 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 20:50:38 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 00:47:22 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void cleanup_game(t_game *game)
     ft_printf("🧽 Iniciando limpeza completa do jogo...\n");
 
     // Clean enemies data BEFORE freeing map
-    if (game->map && game->map->enemies_data)
+    if (game->map && game->map->enemies_data && game->map->enemies > 0)
     {
         free(game->map->enemies_data);
         game->map->enemies_data = NULL;

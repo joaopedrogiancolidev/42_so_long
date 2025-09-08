@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:14:57 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 20:31:36 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 00:53:44 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	move_player(t_game *game, int new_x, int new_y)
 	old_x = game->map->player_pos.x;
 	old_y = game->map->player_pos.y;
 	
+	update_player_direction(game, new_x, new_y);
 	collect_item(game, new_x, new_y);
 	
 	game->map->grid[old_y][old_x] = '0';

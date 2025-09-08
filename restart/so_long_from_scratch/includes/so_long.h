@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 20:39:34 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 01:09:18 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ typedef struct s_position {
     int y;
 } t_position;
 
-typedef struct s_enemy {
-    t_position pos;
-    int direction;      // 0=direita, 1=esquerda, 2=baixo, 3=cima
-    int movement_type;  // 0=horizontal, 1=vertical
+typedef struct s_enemy
+{
+    t_position  pos;
+    int         movement_type;  // 0 = horizontal, 1 = vertical
+    int         direction;      // 0=direita, 1=esquerda, 2=baixo, 3=cima
+    int         last_horizontal_direction; // Adicione esta linha
 } t_enemy;
 
 typedef struct s_textures {
@@ -79,8 +81,10 @@ typedef struct s_game {
     int game_over;
     int frame_count;
     int needs_rerender;
+    int player_direction;
 } t_game;
 
+void	render_enemies_with_direction(t_game *game);
 // ===== PARSING E VALIDAÇÃO =====
 t_map parse_map(char *filename);
 void validate_map(t_map *map);
@@ -119,6 +123,9 @@ int is_valid_move(t_game *game, int x, int y);
 void collect_item(t_game *game, int x, int y);
 void check_win_condition(t_game *game);
 void display_move_count(t_game *game);
+void	render_player_with_direction(t_game *game, int animation_frame);
+void	update_player_direction(t_game *game, int new_x, int new_y);
+void	*get_player_sprite(t_game *game, int animation_frame);
 
 // ===== SISTEMA DE INIMIGOS =====
 void init_enemies(t_game *game);
@@ -126,10 +133,12 @@ void move_enemies(t_game *game);
 int can_enemy_move(t_game *game, int x, int y);
 void move_single_enemy(t_game *game, int enemy_index);
 void check_player_collision(t_game *game);
-
+void	update_enemy_sprite_on_movement(t_enemy *enemy);
+int		get_enemy_sprite_index(t_enemy *enemy);
 // ===== SISTEMA =====
-int close_game(t_game *game);
-void cleanup_textures(t_game *game);
-void cleanup_game(t_game *game);
+void	render_full_hud(t_game *game);
+int     close_game(t_game *game);
+void    cleanup_textures(t_game *game);
+void    cleanup_game(t_game *game);
 
 #endif

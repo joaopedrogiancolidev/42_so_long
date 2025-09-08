@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:17:43 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 15:51:26 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 01:11:01 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	load_textures(t_game *game)
 			"assets/tile/floor.xpm", &width, &height);
 	ft_printf("🧹 Floor result: %p\n", (void *)game->textures.floor);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx,
-			"assets/exit/exit_1.xpm", &width, &height);
+			"assets/exit/determination_broke.xpm", &width, &height);
 	ft_printf("🚫 exit result: %p\n", (void *)game->textures.floor);
 	game->textures.player[0] = mlx_xpm_file_to_image(game->mlx,
-			"assets/player/player_front_1.xpm", &width, &height);
+			"assets/player/frisk_walk_front_1.xpm", &width, &height);
 	game->textures.player[1] = mlx_xpm_file_to_image(game->mlx,
-		"assets/player/player_front_2.xpm", &width, &height);		
+		"assets/player/frisk_walk_front_2.xpm", &width, &height);		
 	ft_printf("💃 player result: %p\n", (void *)game->textures.floor);
 	game->textures.collectible[0] = mlx_xpm_file_to_image(game->mlx,
 			"assets/collectibles/collect_1.xpm", &width, &height);
@@ -55,9 +55,9 @@ void	load_textures(t_game *game)
 		"assets/collectibles/collect_2.xpm", &width, &height);
 	ft_printf("🦰 collectible result: %p\n", (void *)game->textures.floor);
 	game->textures.enemies[0] = mlx_xpm_file_to_image(game->mlx,
-			"assets/enemies/enemies_front_1.xpm", &width, &height);
+			"assets/enemies/Sans_left.xpm", &width, &height);
 	game->textures.enemies[1] = mlx_xpm_file_to_image(game->mlx,
-		"assets/enemies/enemies_front_2.xpm", &width, &height);	
+		"assets/enemies/Sans_right.xpm", &width, &height);	
 	ft_printf("🛀 enemies result: %p\n", (void *)game->textures.floor);
 	//load_verification(game);
 }

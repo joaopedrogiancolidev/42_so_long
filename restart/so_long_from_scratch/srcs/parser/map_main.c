@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 21:00:41 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 00:54:49 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_game_state(t_game *game)
 	game->game_over = 0;
 	game->frame_count = 0;
 	game->needs_rerender = 1; // Força primeira renderização
+	game->player_direction = 3;
 	
 	ft_printf("🎮 Estado inicial do jogo:\n");
 	ft_printf("   • Movimentos: %d\n", game->moves);
@@ -80,6 +81,7 @@ int	main(int argc, char **argv)
 	// Renderização inicial
 	render_static_map(&game);
 	render_animated_entities(&game, 0);
+	render_full_hud(&game);
 	
 	// Informações para o jogador
 	print_controls();

@@ -22,10 +22,13 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/graphics/init_graphics.c \
 		srcs/graphics/load_textures.c \
 		srcs/graphics/render_map.c \
+		srcs/graphics/enemy_animation.c \
 		srcs/graphics/animate.c \
+		srcs/graphics/hud_display.c \
 		srcs/gameplay/cleanup.c \
 		srcs/gameplay/gameplay.c \
-		srcs/gameplay/enemy_movement.c
+		srcs/gameplay/enemy_movement.c \
+		srcs/gameplay/player_direction.c
 
 OBJ = $(SRC:.c=.o)
 

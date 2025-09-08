@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:34:44 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/07 21:31:11 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/08 00:51:03 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_enemies(t_game *game)
 	if (game->map->enemies == 0)
 	{
 		ft_printf("⚠️  Nenhum inimigo encontrado no mapa\n");
+		game->map->enemies_data = NULL;
 		return;
 	}
 
@@ -61,12 +62,14 @@ void	init_enemies(t_game *game)
 				{
 					game->map->enemies_data[enemy_count].movement_type = 0;
 					game->map->enemies_data[enemy_count].direction = 0;
+					game->map->enemies_data[enemy_count].last_horizontal_direction = 0;
 					ft_printf("HORIZONTAL →\n");
 				}
 				else // Inimigos ÍMPARES: Vertical
 				{
 					game->map->enemies_data[enemy_count].movement_type = 1;
 					game->map->enemies_data[enemy_count].direction = 2;
+					game->map->enemies_data[enemy_count].last_horizontal_direction = 0;
 					ft_printf("VERTICAL ↓\n");
 				}
 				enemy_count++;
@@ -176,6 +179,19 @@ void	move_single_enemy(t_game *game, int enemy_index)
 			ft_printf("🔄 Inimigo %d inverteu direção vertical: %d\n", enemy_index, enemy->direction);
 		}
 	}
+	if (can_enemy_move(game, new_x, new_y))
+	{
+		// Move o inimigo
+		game->map->grid[old_y][old_x] = '0';
+		game->map->grid[new_y][new_x] = 'M';
+		enemy->pos.x = new_x;
+		enemy->pos.y = new_y;
+		
+		// Adicione esta linha:
+		update_enemy_sprite_on_movement(enemy);
+		
+		ft_printf("✅ Inimigo %d movido para (%d,%d)\n", enemy_index, new_x, new_y);
+}
 }
 
 // Verifica colisão entre player e inimigos

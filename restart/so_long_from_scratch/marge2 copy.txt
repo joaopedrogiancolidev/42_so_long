@@ -2,10 +2,10 @@ restart----ft_printf(contem get_next_line)
         I--minilibx
         I--so_long_from_scratch
                 I---------------assets--collectibles--collect_1.xpm,collect_2.xpm
-                I                  I-----player--------player_front_1.xpm,player_front_2.xpm
-                I                  I-----exit----------exit_1.xpm,exit_2.xpm,exit_3.xpm
+                I                  I-----player--------frisk_back_1.xpm,frisk_back_2.xpm,frisk_front_1.xpm,frisk_front_2.xpm,frisk_standing_left.xpm,frisk_standing_right.xpm,frisk_walk_front_1.xpm,frisk_walk_front_2.xpm,frisk_walking_left_1.xpm,frisk_walking_left_2.xpm,frisk_walking_right_1.xpm,frisk_walking_right_2.xpm
+                I                  I-----exit----------determination_broke.xpm,determination_light_1.xpm,determination_light_2.xpm
                 I                  I-----tile----------floor.xpm,wall.xpm
-                I                  I-----enemies-------enemies_front_1.xpm,enemies_front_2.xpm
+                I                  I-----enemies-------Sans_left.xpm,Sans_right.xpm
                 I
                 I---------------includes----------so_long.h
                 I
