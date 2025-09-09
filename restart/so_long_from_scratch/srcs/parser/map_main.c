@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:06:15 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 13:42:39 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 20:32:30 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 #include "../../includes/so_long.h"
 
-void	init_game_state(t_game *game)
+static void	init_game_state(t_game *game)
 {
 	game->moves = 0;
 	game->collected = 0;
 	game->game_over = 0;
 	game->frame_count = 0;
-	game->needs_rerender = 1; // Força primeira renderização
+	game->needs_rerender = 1;
 	game->player_direction = DOWN;
-	
 	ft_printf("🎮 Estado inicial do jogo:\n");
 	ft_printf("   • Movimentos: %d\n", game->moves);
 	ft_printf("   • Collectibles para coletar: %d\n", game->map->collectibles);
-	ft_printf("   • Posição inicial: (%d, %d)\n", 
+	ft_printf("   • Posição inicial: (%d, %d)\n",
 		game->map->player_pos.x, game->map->player_pos.y);
 	ft_printf("   • Inimigos no mapa: %d\n", game->map->enemies);
 }
 
-void	print_controls(void)
+static void	print_controls(void)
 {
 	ft_printf("\n🎮 CONTROLES DO JOGO:\n");
 	ft_printf("   • WASD ou Arrow Keys: Mover player\n");
@@ -42,63 +41,49 @@ void	print_controls(void)
 	ft_printf("   • Evite os inimigos (M)\n\n");
 }
 
+static int	init_game(t_game *game, t_map *map, char *map_file)
+{
+	ft_printf("🚀 Inicializando So_long...\n");
+	*map = parse_map(map_file);
+	validate_map(map);
+	print_map_info(map);
+	if (!init_graphics(game, map))
+	{
+		free_map(map);
+		throw_error("Falha ao inicializar gráficos");
+	}
+	return (1);
+}
+
+static void	load_game_content(t_game *game)
+{
+	load_textures(game);
+	init_game_state(game);
+	init_enemies(game);
+	render_static_map(game);
+	render_animated_entities(game, 0);
+	render_full_hud(game);
+	print_controls();
+	ft_printf("✅ Jogo carregado com sucesso!\n");
+	ft_printf("📏 Tamanho do mapa: %dx%d\n",
+		game->map->width, game->map->height);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	map;
 	t_game	game;
 
-	// Validação de argumentos
 	if (argc != 2)
-	{
-		ft_printf("❌ Uso: %s <map_file.ber>\n", argv[0]);
+		return (ft_printf("❌ Uso: %s <map_file.ber>\n", argv[0]), 1);
+	if (!init_game(&game, &map, argv[1]))
 		return (1);
-	}
-	
-	ft_printf("🚀 Inicializando So_long...\n");
-	
-	// Parse e validação do mapa
-	map = parse_map(argv[1]);
-	validate_map(&map);
-	print_map_info(&map);
-	
-	// Inicialização gráfica
-	if (!init_graphics(&game, &map))
-	{
-		free_map(&map);
-		throw_error("Falha ao inicializar gráficos");
-	}
-	
-	// Carregamento das texturas
-	load_textures(&game);
-	
-	// Inicialização do estado do jogo
-	init_game_state(&game);
-	
-	// 🆕 INICIALIZAÇÃO DOS INIMIGOS - ADICIONEI ESTA PARTE
-	ft_printf("🤖 Inicializando sistema de inimigos...\n");
-	init_enemies(&game);
-	
-	// Renderização inicial
-	render_static_map(&game);
-	render_animated_entities(&game, 0);
-	render_full_hud(&game);
-	
-	// Informações para o jogador
-	print_controls();
-	ft_printf("✅ Jogo carregado com sucesso!\n");
-	ft_printf("📏 Tamanho do mapa: %dx%d\n", map.width, map.height);
-	
-	// Setup dos hooks do MLX
-	mlx_loop_hook(game.mlx, animate_game, &game);           // Animação contínua
-	mlx_hook(game.window, 2, 1L<<0, key_press, &game);     // KeyPress event
-	mlx_hook(game.window, 17, 0, close_game, &game);       // Window close event
-	
+	load_game_content(&game);
+	mlx_loop_hook(game.mlx, animate_game, &game);
+	mlx_hook(game.window, 2, 1L << 0, key_press, &game);
+	mlx_hook(game.window, 17, 0, close_game, &game);
 	ft_printf("🎬 Iniciando loop principal do jogo...\n\n");
-	
-	// Loop principal
 	mlx_loop(game.mlx);
-	
-	// Este código nunca deveria ser executado devido ao mlx_loop
 	ft_printf("⚠️ Saída inesperada do mlx_loop\n");
 	return (0);
 }
