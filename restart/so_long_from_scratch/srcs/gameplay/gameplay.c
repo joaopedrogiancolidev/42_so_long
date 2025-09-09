@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:14:57 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 14:31:13 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:54:18 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ void	move_player(t_game *game, int new_x, int new_y)
 {
 	int	old_x;
 	int	old_y;
+
+	if (game->map->grid[new_y][new_x] == 'M')
+	{
+		ft_printf("💀 Game Over! Você andou para cima de um inimigo!\n");
+		game->game_over = 1;
+		close_game(game);
+		return;
+	}
 	
 	if (!is_valid_move(game, new_x, new_y) || game->game_over)
 		return;

@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:17:43 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 14:13:10 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:39:00 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	load_textures(t_game *game)
 			"assets/tile/floor.xpm", &width, &height);
 	ft_printf("🧹 Floor result: %p\n", (void *)game->textures.floor);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx,
-			"assets/exit/determination_broke.xpm", &width, &height);
+			"assets/exit/determination_light_1.xpm", &width, &height);
 	ft_printf("🚫 exit result: %p\n", (void *)game->textures.floor);
 	game->textures.player[DOWN] = mlx_xpm_file_to_image(game->mlx,
 		"assets/player/frisk_front_2.xpm", &width, &height);
