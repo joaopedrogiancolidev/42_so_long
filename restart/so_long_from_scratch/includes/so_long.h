@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 14:10:07 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 20:56:02 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,10 @@ void	update_enemy_sprite_on_movement(t_enemy *enemy);
 int		get_enemy_sprite_index(t_enemy *enemy);
 // ===== SISTEMA =====
 void	render_full_hud(t_game *game);
-int     close_game(t_game *game);
-void    cleanup_textures(t_game *game);
-void    cleanup_game(t_game *game);
+
+// cleanup.c
+int		close_game(t_game *game);
+void	cleanup_textures(t_game *game);
+void	cleanup_game(t_game *game);
 
 #endif

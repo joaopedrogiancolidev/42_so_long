@@ -25,7 +25,9 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/graphics/enemy_animation.c \
 		srcs/graphics/animate.c \
 		srcs/graphics/hud_display.c \
-		srcs/gameplay/cleanup.c \
+		srcs/gameplay/cleanup_textures.c \
+		srcs/gameplay/cleanup_game.c \
+		srcs/gameplay/cleanup_close.c \
 		srcs/gameplay/gameplay.c \
 		srcs/gameplay/enemy_movement.c 
 
