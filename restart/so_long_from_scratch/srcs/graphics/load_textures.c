@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 16:17:43 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/08 01:11:01 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:13:10 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,18 @@ void	load_textures(t_game *game)
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx,
 			"assets/exit/determination_broke.xpm", &width, &height);
 	ft_printf("🚫 exit result: %p\n", (void *)game->textures.floor);
-	game->textures.player[0] = mlx_xpm_file_to_image(game->mlx,
-			"assets/player/frisk_walk_front_1.xpm", &width, &height);
-	game->textures.player[1] = mlx_xpm_file_to_image(game->mlx,
-		"assets/player/frisk_walk_front_2.xpm", &width, &height);		
+	game->textures.player[DOWN] = mlx_xpm_file_to_image(game->mlx,
+		"assets/player/frisk_front_2.xpm", &width, &height);
+	ft_printf("🔍 Player DOWN result: %p\n", (void *)game->textures.player[DOWN]);
+	game->textures.player[UP] = mlx_xpm_file_to_image(game->mlx,
+		"assets/player/frisk_back.xpm", &width, &height);
+	ft_printf("🔍 Player UP result: %p\n", (void *)game->textures.player[UP]);
+	game->textures.player[LEFT] = mlx_xpm_file_to_image(game->mlx,
+		"assets/player/frisk_left.xpm", &width, &height);
+	ft_printf("🔍 Player LEFT result: %p\n", (void *)game->textures.player[LEFT]);
+	game->textures.player[RIGHT] = mlx_xpm_file_to_image(game->mlx,
+		"assets/player/frisk_right.xpm", &width, &height);
+ft_printf("🔍 Player RIGHT result: %p\n", (void *)game->textures.player[RIGHT]);	
 	ft_printf("💃 player result: %p\n", (void *)game->textures.floor);
 	game->textures.collectible[0] = mlx_xpm_file_to_image(game->mlx,
 			"assets/collectibles/collect_1.xpm", &width, &height);

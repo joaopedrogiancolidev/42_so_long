@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:42:44 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/08 01:10:11 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:37:17 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	render_animated_entities(t_game *game, int frame)
 		x = 0;
 		while (x < game->map->width)
 		{
-			if (game->map->grid[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->textures.player[frame], x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map->grid[y][x] == 'C')
+			if (game->map->grid[y][x] == 'C')
 				mlx_put_image_to_window(game->mlx, game->window,
 					game->textures.collectible[frame], x * TILE_SIZE, y * TILE_SIZE);
 			else if (game->map->grid[y][x] == 'M') // ADICIONE ESTA LINHA DE VOLTA
@@ -36,7 +33,6 @@ void	render_animated_entities(t_game *game, int frame)
 		}
 		y++;
 	}
-	
 	render_enemies_with_direction(game);
 }
 
@@ -64,6 +60,7 @@ int	animate_game(t_game *game)
 	{
 		render_static_map(game);
 		render_animated_entities(game, animation_frame);
+		render_static_player(game);
 		render_full_hud(game);
 		game->needs_rerender = 0;
 	}

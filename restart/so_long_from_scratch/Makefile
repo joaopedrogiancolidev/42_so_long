@@ -27,8 +27,7 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/graphics/hud_display.c \
 		srcs/gameplay/cleanup.c \
 		srcs/gameplay/gameplay.c \
-		srcs/gameplay/enemy_movement.c \
-		srcs/gameplay/player_direction.c
+		srcs/gameplay/enemy_movement.c 
 
 OBJ = $(SRC:.c=.o)
 

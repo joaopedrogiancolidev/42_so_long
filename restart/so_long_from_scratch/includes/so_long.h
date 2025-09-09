@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/08 01:09:18 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:10:07 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_position {
     int y;
 } t_position;
 
+typedef enum e_direction
+{
+    DOWN = 0,
+    UP = 1,
+    LEFT = 2,
+    RIGHT = 3,
+} t_direction;
+
 typedef struct s_enemy
 {
     t_position  pos;
@@ -51,7 +59,7 @@ typedef struct s_enemy
 typedef struct s_textures {
     void *wall;
     void *floor;
-    void *player[2];
+    void *player[4];
     void *collectible[2];
     void *exit;
     void *enemies[2];
@@ -67,8 +75,8 @@ typedef struct s_map {
     int enemies;
     t_position player_pos;
     t_position exit_pos;
-    t_position *enemy_pos;      // Manter para compatibilidade
-    t_enemy *enemies_data;      // 🆕 Novos dados dos inimigos
+    t_position *enemy_pos;
+    t_enemy *enemies_data;
 } t_map;
 
 typedef struct s_game {
@@ -112,6 +120,7 @@ void throw_error(char *message);
 int init_graphics(t_game *game, t_map *map);
 void load_textures(t_game *game);
 void render_static_map(t_game *game);
+void render_static_player(t_game *game);
 void render_animated_entities(t_game *game, int frame);
 void render_complete_map(t_game *game, int frame);
 int animate_game(t_game *game);

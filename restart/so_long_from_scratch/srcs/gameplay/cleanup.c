@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:53:52 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/08 00:47:22 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 13:41:57 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	cleanup_textures(t_game *game)
 	}
 
 	// Limpa texturas animadas do player
-	if (game->textures.player[0])
+	int i = 0;
+	while (i < 4)
 	{
-		mlx_destroy_image(game->mlx, game->textures.player[0]);
-		game->textures.player[0] = NULL;
-	}
-	if (game->textures.player[1])
-	{
-		mlx_destroy_image(game->mlx, game->textures.player[1]);
-		game->textures.player[1] = NULL;
+		if (game->textures.player[i])
+		{
+			mlx_destroy_image(game->mlx, game->textures.player[i]);
+			game->textures.player[i] = NULL;
+		}
+		i++;
 	}
 
 	// Limpa texturas animadas dos collectibles
