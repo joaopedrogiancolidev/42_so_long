@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 18:14:57 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 13:54:02 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:31:13 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ int	key_press(int keycode, t_game *game)
 {
 	int	new_x = game->map->player_pos.x;
 	int	new_y = game->map->player_pos.y;
-
+	
 	printf("DEBUG: Tecla pressionada: %d\n", keycode);
+	printf("DEBUG: Direção ANTES: %d\n", game->player_direction);
 	
 	if (game->game_over && keycode == ESC_KEY)
 		close_game(game);
@@ -107,31 +108,38 @@ int	key_press(int keycode, t_game *game)
 	{
 		new_y--;
 		game->player_direction = UP;
-		printf("DEBUG: Apertou W/UP - Direction setada para: %d\n", game->player_direction);
+		printf("DEBUG: Apertou W/UP - Direction DEPOIS: %d\n", game->player_direction);
 	}
 	else if (keycode == S_KEY || keycode == DOWN_KEY)
 	{
 		new_y++;
 		game->player_direction = DOWN;
-		printf("DEBUG: Apertou S/DOWN - Direction setada para: %d\n", game->player_direction);
+		printf("DEBUG: Apertou S/DOWN - Direction DEPOIS: %d\n", game->player_direction);
 	}
 	else if (keycode == A_KEY || keycode == LEFT_KEY)
 	{
 		new_x--;
 		game->player_direction = LEFT;
-		printf("DEBUG: Apertou A/LEFT - Direction setada para: %d\n", game->player_direction);
+		printf("DEBUG: Apertou A/LEFT - Direction DEPOIS: %d\n", game->player_direction);
 	}
 	else if (keycode == D_KEY || keycode == RIGHT_KEY)
 	{
 		new_x++;
 		game->player_direction = RIGHT;
-		printf("DEBUG: Apertou D/RIGHT - Direction setada para: %d\n", game->player_direction);
+		printf("DEBUG: Apertou D/RIGHT - Direction DEPOIS: %d\n", game->player_direction);
 	}
+	else
+	{
+		printf("DEBUG: Tecla não reconhecida: %d\n", keycode);
+		return (0);
+	}
+	
+	printf("DEBUG: Direção FINAL antes de mover: %d\n", game->player_direction);
+	
 	if (new_x != game->map->player_pos.x || new_y != game->map->player_pos.y)
 		move_player(game, new_x, new_y);
-	else if (keycode == W_KEY || keycode == S_KEY || keycode == A_KEY || keycode == D_KEY ||
-		keycode == UP_KEY || keycode == DOWN_KEY || keycode == LEFT_KEY || keycode == RIGHT_KEY)
-		game->needs_rerender = 1; // NOVO: Força rerender mesmo se não se moveu (para atualizar sprite)
+	else
+		game->needs_rerender = 1;
 		
 	return (0);
 }
