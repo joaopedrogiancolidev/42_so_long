@@ -10,6 +10,7 @@ MLX_DIR = ../minilibx
 INC_DIR = includes
 
 SRC = 	srcs/parser/map_main.c \
+		srcs/parser/map_setup.c \
 		srcs/parser/map_parser.c \
 		srcs/parser/map_struct.c \
 		srcs/parser/map_fill.c \
