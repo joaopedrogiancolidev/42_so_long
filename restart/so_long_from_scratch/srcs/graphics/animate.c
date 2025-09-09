@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 23:42:44 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 13:37:17 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 20:38:56 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	render_animated_entities(t_game *game, int frame)
 		{
 			if (game->map->grid[y][x] == 'C')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->textures.collectible[frame], x * TILE_SIZE, y * TILE_SIZE);
-			else if (game->map->grid[y][x] == 'M') // ADICIONE ESTA LINHA DE VOLTA
+					game->textures.collectible[frame],
+					x * TILE_SIZE, y * TILE_SIZE);
+			else if (game->map->grid[y][x] == 'M')
 				mlx_put_image_to_window(game->mlx, game->window,
-					game->textures.enemies[frame], x * TILE_SIZE, y * TILE_SIZE);		
+					game->textures.enemies[frame],
+					x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;
@@ -39,23 +41,16 @@ void	render_animated_entities(t_game *game, int frame)
 int	animate_game(t_game *game)
 {
 	static int	animation_frame = 0;
-	
+
 	if (!game || game->game_over)
 		return (0);
-	
 	game->frame_count++;
-	
-	// Update animations every 30 frames (roughly 0.5 seconds at 60fps)
 	if (game->frame_count % 2 == 0)
-	{		// Toggle animation frame between 0 and 1
+	{
 		animation_frame = !animation_frame;
 		game->needs_rerender = 1;
 	}
-	
-	// Move enemies (they have their own timing control)
 	move_enemies(game);
-	
-	// Re-render if needed
 	if (game->needs_rerender)
 	{
 		render_static_map(game);
@@ -64,9 +59,5 @@ int	animate_game(t_game *game)
 		render_full_hud(game);
 		game->needs_rerender = 0;
 	}
-	
 	return (0);
 }
-	// if (current_frame != last_frame)
-	// 	ft_printf("🔄 Frame changed: %d -> %d (count: %d)\n", 
-	// 		last_frame, current_frame, game->frame_count);
