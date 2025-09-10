@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:56:53 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:56:56 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:47:34 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	cleanup_game(t_game *game)
 {
 	if (!game)
 		return ;
-	ft_printf("🧽 Iniciando limpeza completa do jogo...\n");
+	ft_printf("🧽 Starting complete game cleanup...\n");
 	cleanup_map_resources(game);
 	cleanup_textures(game);
 	cleanup_mlx_resources(game);
-	ft_printf("✅ Limpeza completa finalizada\n");
+	ft_printf("✅ Cleaning complete!\n");
 }

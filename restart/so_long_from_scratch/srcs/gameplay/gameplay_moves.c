@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 21:05:28 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:43:47 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:59:32 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	is_valid_move(t_game *game, int x, int y)
 		return (0);
 	if (game->map->grid[y][x] == 'M')
 	{
-		ft_printf("💀 Game Over! Catch by Sans!\n");
+		ft_printf("💀 Game Over! Caught by Sans!\n");
 		game->game_over = 1;
 		close_game(game);
 		return (0);
 	}
 	if (game->map->grid[y][x] == 'E' && game->map->collectibles > 0)
 	{
-		ft_printf("🚪 Must collect all! (%d restantes)\n",
+		ft_printf("🚪 Must collect them all! (%d remaining)\n",
 			game->map->collectibles);
 		return (0);
 	}
@@ -41,7 +41,7 @@ void	collect_item(t_game *game, int x, int y)
 		game->map->grid[y][x] = '0';
 		game->collected++;
 		game->map->collectibles--;
-		ft_printf("🎯 Collectible achieve! (%d restantes)\n",
+		ft_printf("🎯 Collectible collected! (%d left)\n",
 			game->map->collectibles);
 		game->needs_rerender = 1;
 	}
@@ -58,7 +58,7 @@ void	check_win_condition(t_game *game)
 	if (game->map->grid[game->map->player_pos.y][game->map->player_pos.x] == 'E'
 		&& game->map->collectibles == 0)
 	{
-		ft_printf("🏆 CONGRATZS! You win in %d moves!\n", game->moves);
+		ft_printf("\n\n✴️ You have DETERMINATION! All in %d moves!\n", game->moves);
 		game->game_over = 1;
 		close_game(game);
 	}

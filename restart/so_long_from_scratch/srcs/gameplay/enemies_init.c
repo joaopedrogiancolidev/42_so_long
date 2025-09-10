@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:26:40 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:39:53 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:48:57 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_enemies(t_game *game)
 {
 	if (!game || !game->map)
 	{
-		ft_printf("❌ ERROR: game ou map é NULL\n");
+		ft_printf("❌ ERROR: game or map is NULL\n");
 		return ;
 	}
 	if (game->map->enemies == 0)
@@ -69,6 +69,6 @@ void	init_enemies(t_game *game)
 	}
 	game->map->enemies_data = malloc(sizeof(t_enemy) * game->map->enemies);
 	if (!game->map->enemies_data)
-		throw_error("Falha ao alocar dados dos inimigos");
+		throw_error("Failed into find enemies");
 	scan_map_for_enemies(game);
 }

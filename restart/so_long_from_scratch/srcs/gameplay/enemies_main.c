@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_main.c                                       :+:      :+:    :+:   */
+/*   enemies_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:27:27 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:27:44 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:49:09 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	move_enemies(t_game *game)
 	enemy_move_counter++;
 	if (enemy_move_counter < 600)
 		return ;
-	ft_printf("🚀 Movendo todos os inimigos! Frame: %d\n", enemy_move_counter);
 	enemy_move_counter = 0;
 	if (!game || !game->map)
 		return ;
@@ -34,5 +33,4 @@ void	move_enemies(t_game *game)
 	}
 	check_player_collision(game);
 	game->needs_rerender = 1;
-	ft_printf("🎨 Renderização marcada como necessária\n");
 }

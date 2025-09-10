@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 20:56:36 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:56:41 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:47:43 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	cleanup_textures(t_game *game)
 {
 	if (!game || !game->mlx)
 		return ;
-	ft_printf("🧹 Limpando texturas...\n");
+	ft_printf("🧹 Cleaning textures...\n");
 	cleanup_basic_textures(game);
 	cleanup_player_textures(game);
 	cleanup_collectible_textures(game);
