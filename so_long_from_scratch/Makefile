@@ -87,20 +87,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
+	rm -rf obj/
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
 re_bonus: fclean bonus
-
-show-marge:
-	@if [ -f "marge2.txt" ]; then \
-		echo "\nMarge está Krumplin!:"; \
-		cat marge2.txt; \
-		echo ""; \
-	else \
-		echo "\nmarge2.txt não encontrada!"; \
-	fi
 
 .PHONY: all bonus clean fclean re re_bonus libs

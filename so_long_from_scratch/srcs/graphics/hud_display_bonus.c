@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 00:19:17 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/10 02:35:24 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/10 02:38:36 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	render_hud_background_bonus(t_game *game)
 	int	y;
 	int	hud_width;
 
-	hud_width = 250;
+	hud_width = 100;
 	y = 0;
 	while (y < 60)
 	{
