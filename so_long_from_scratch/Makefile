@@ -1,6 +1,6 @@
 # ------Variaveis------
-
 NAME = so_long
+NAME_BONUS = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -9,7 +9,8 @@ FT_PRINTF_DIR = ../ft_printf
 MLX_DIR = ../minilibx
 INC_DIR = includes
 
-SRC = 	srcs/parser/map_main.c \
+# Arquivos comuns
+SRC_COMMON = srcs/parser/map_main.c \
 		srcs/parser/map_parser.c \
 		srcs/parser/map_struct.c \
 		srcs/parser/map_fill.c \
@@ -18,13 +19,12 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/validation/validate_chars.c \
 		srcs/validation/validate_entities.c \
 		srcs/validation/find_positions.c \
-		srcs/validation/validate_path.c  \
+		srcs/validation/validate_path.c \
 		srcs/graphics/init_graphics.c \
 		srcs/graphics/load_textures.c \
 		srcs/graphics/render_map.c \
 		srcs/graphics/enemy_animation.c \
 		srcs/graphics/animate.c \
-		srcs/graphics/hud_display.c \
 		srcs/gameplay/cleanup_textures.c \
 		srcs/gameplay/cleanup_game.c \
 		srcs/gameplay/cleanup_close.c \
@@ -35,46 +35,72 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/gameplay/enemies_main.c \
 		srcs/gameplay/enemies_collision.c
 
-OBJ = $(SRC:.c=.o)
+# Arquivos específicos
+SRC_MANDATORY = $(SRC_COMMON) srcs/graphics/hud_display.c
+SRC_BONUS = $(SRC_COMMON) srcs/graphics/hud_display_bonus.c
 
+# Objetos específicos para evitar conflitos
+OBJ_MANDATORY_DIR = obj/mandatory
+OBJ_BONUS_DIR = obj/bonus
 
+OBJ_MANDATORY = $(patsubst srcs/%.c,$(OBJ_MANDATORY_DIR)/%.o,$(SRC_MANDATORY))
+OBJ_BONUS = $(patsubst srcs/%.c,$(OBJ_BONUS_DIR)/%.o,$(SRC_BONUS))
+
+# Regras principais
 all: libs $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "🖋️Linkando $(NAME)..."
-	$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
+bonus: libs $(NAME_BONUS)
 
-%.o: %.c
-	@echo "🚧 Compilando $<...."
-	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR)  -c $< -o $@
+$(NAME): $(OBJ_MANDATORY)
+	@echo "Linkando $(NAME)..."
+	$(CC) $(CFLAGS) $(OBJ_MANDATORY) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME)
+
+$(NAME_BONUS): $(OBJ_BONUS)
+	@echo "Linkando $(NAME_BONUS) com bonus..."
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -o $(NAME_BONUS)
+
+# Compilação objetos mandatory
+$(OBJ_MANDATORY_DIR)/%.o: srcs/%.c
+	@mkdir -p $(dir $@)
+	@echo "Compilando $< (mandatory)..."
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR) -c $< -o $@
+
+# Compilação objetos bonus
+$(OBJ_BONUS_DIR)/%.o: srcs/%.c
+	@mkdir -p $(dir $@)
+	@echo "Compilando $< (bonus)..."
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR) -c $< -o $@
 
 libs:
-	@echo "🥌  Compilando libft"
+	@echo "Compilando libft"
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory
-	@echo "🖨️  Compilando ft_printf..."
+	@echo "Compilando ft_printf..."
 	$(MAKE) -C $(FT_PRINTF_DIR) --no-print-directory
-	@echo "🦜  Compilando MiniLibX..."
+	@echo "Compilando MiniLibX..."
 	$(MAKE) -C $(MLX_DIR) --no-print-directory
+
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_MANDATORY_DIR) $(OBJ_BONUS_DIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(FT_PRINTF_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
+re_bonus: fclean bonus
+
 show-marge:
 	@if [ -f "marge2.txt" ]; then \
-		echo "\n$(BLUE)📄 Marge está Krumplin! 💃:$(RESET)"; \
+		echo "\nMarge está Krumplin!:"; \
 		cat marge2.txt; \
 		echo ""; \
 	else \
-		echo "\n$(RED)❌ marge2.txt não encontrada!$(RESET)"; \
+		echo "\nmarge2.txt não encontrada!"; \
 	fi
 
-.PHONY: all clean fclean re libft
+.PHONY: all bonus clean fclean re re_bonus libs
