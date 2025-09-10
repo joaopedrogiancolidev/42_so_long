@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 00:19:17 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/10 02:20:01 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/10 02:35:24 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	render_hud_background_bonus(t_game *game)
 	int	y;
 	int	hud_width;
 
-	hud_width = 250; // Increased width for better display
+	hud_width = 250;
 	y = 0;
-	while (y < 60) // Increased height for better visibility
+	while (y < 60)
 	{
 		x = 0;
 		while (x < hud_width)
@@ -73,13 +73,11 @@ void	render_game_status_bonus(t_game *game)
 	if (game->game_over)
 	{
 		if (game->map->collectibles == 0)
-			mlx_string_put(game->mlx, game->window, 15, 85, 0x00FF00, "YOU WIN!");
+			mlx_string_put(game->mlx, game->window,
+				15, 85, 0x00FF00, "YOU WIN!");
 		else
-			mlx_string_put(game->mlx, game->window, 15, 85, 0xFF0000, "GAME OVER!");
-	}
-	else
-	{
-		mlx_string_put(game->mlx, game->window, 15, 85, 0xFFFF00, "Playing...");
+			mlx_string_put(game->mlx, game->window,
+				15, 85, 0xFF0000, "GAME OVER!");
 	}
 }
 
@@ -87,7 +85,6 @@ void	render_full_hud(t_game *game)
 {
 	if (!game || !game->mlx || !game->window)
 		return ;
-	
 	render_hud_background_bonus(game);
 	render_moves_counter_bonus(game);
 	render_collectibles_counter_bonus(game);
