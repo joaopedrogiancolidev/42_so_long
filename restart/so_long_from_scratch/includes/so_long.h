@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:56:02 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 21:06:52 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,16 +125,15 @@ void render_animated_entities(t_game *game, int frame);
 void render_complete_map(t_game *game, int frame);
 int animate_game(t_game *game);
 
-// ===== GAMEPLAY - A IMPLEMENTAR =====
-int key_press(int keycode, t_game *game);
-void move_player(t_game *game, int new_x, int new_y);
-int is_valid_move(t_game *game, int x, int y);
-void collect_item(t_game *game, int x, int y);
-void check_win_condition(t_game *game);
-void display_move_count(t_game *game);
-void	render_player_with_direction(t_game *game, int animation_frame);
-void	update_player_direction(t_game *game, int new_x, int new_y);
-void	*get_player_sprite(t_game *game, int animation_frame);
+// gameplay_moves.c
+int		is_valid_move(t_game *game, int x, int y);
+void	collect_item(t_game *game, int x, int y);
+void	display_move_count(t_game *game);
+void	check_win_condition(t_game *game);
+void	move_player(t_game *game, int new_x, int new_y);
+
+// gameplay_keys.c
+int		key_press(int keycode, t_game *game);
 
 // ===== SISTEMA DE INIMIGOS =====
 void init_enemies(t_game *game);
