@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies_main.c                                     :+:      :+:    :+:   */
+/*   enemies_main_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:27:27 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:49:09 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:39:03 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	move_enemies(t_game *game)
 {

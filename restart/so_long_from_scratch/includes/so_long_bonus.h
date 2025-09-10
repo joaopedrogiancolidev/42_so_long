@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 23:07:13 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:34:23 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/09 22:36:32 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,21 @@ typedef enum e_direction
 	RIGHT = 3,
 }	t_direction;
 
+typedef struct s_enemy
+{
+	t_position	pos;
+	int			movement_type;
+	int			direction;
+	int			last_horizontal_direction;
+}	t_enemy;
+
 typedef struct s_textures {
 	void	*wall;
 	void	*floor;
 	void	*player[4];
 	void	*collectible[2];
 	void	*exit;
+	void	*enemies[2];
 }	t_textures;
 
 typedef struct s_map {
@@ -63,8 +72,11 @@ typedef struct s_map {
 	int			collectibles;
 	int			exits;
 	int			players;
+	int			enemies;
 	t_position	player_pos;
 	t_position	exit_pos;
+	t_position	*enemy_pos;
+	t_enemy		*enemies_data;
 }	t_map;
 
 typedef struct s_game {
@@ -122,7 +134,26 @@ void	move_player(t_game *game, int new_x, int new_y);
 // gameplay_keys.c
 int		key_press(int keycode, t_game *game);
 
+// ===== SISTEMA DE INIMIGOS =====
+void	update_enemy_sprite_on_movement(t_enemy *enemy);
+int		get_enemy_sprite_index(t_enemy *enemy);
+void	render_enemies_with_direction(t_game *game);
+
+// enemies_init.c
+void	init_enemies(t_game *game);
+
+// enemies_movement.c
+int		can_enemy_move(t_game *game, int x, int y);
+void	move_single_enemy(t_game *game, int enemy_index);
+
+// enemies_collision.c
+void	check_player_collision(t_game *game);
+
+// enemies_main.c
+void	move_enemies(t_game *game);
+
 // ===== SISTEMA =====
+void	render_full_hud(t_game *game);
 // cleanup.c
 int		close_game(t_game *game);
 void	cleanup_textures(t_game *game);

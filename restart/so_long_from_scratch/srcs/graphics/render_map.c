@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 19:13:28 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:44:26 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:26:05 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	render_static_player(t_game *game)
 	if (!game->mlx || !game->window
 		|| !game->textures.player[game->player_direction])
 	{
-		printf("ERRO: Ponteiro NULL detectado!\n");
+		ft_printf("ERRO: Ponteiro NULL detectado!\n");
 		return ;
 	}	
 	mlx_put_image_to_window(game->mlx, game->window,

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_textures.c                                    :+:      :+:    :+:   */
+/*   load_textures_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 23:34:59 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:35:04 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/06 16:17:43 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/09 23:39:20 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	load_player_textures(t_game *game, int width, int height)
 {
@@ -30,6 +30,14 @@ static void	load_collectible_textures(t_game *game, int width, int height)
 			"assets/collectibles/collect_1.xpm", &width, &height);
 	game->textures.collectible[1] = mlx_xpm_file_to_image(game->mlx,
 			"assets/collectibles/collect_2.xpm", &width, &height);
+}
+
+static void	load_enemy_textures(t_game *game, int width, int height)
+{
+	game->textures.enemies[0] = mlx_xpm_file_to_image(game->mlx,
+			"assets/enemies/Sans_left.xpm", &width, &height);
+	game->textures.enemies[1] = mlx_xpm_file_to_image(game->mlx,
+			"assets/enemies/Sans_right.xpm", &width, &height);
 }
 
 static void	load_basic_textures(t_game *game, int width, int height)
@@ -52,4 +60,5 @@ void	load_textures(t_game *game)
 	load_basic_textures(game, width, height);
 	load_player_textures(game, width, height);
 	load_collectible_textures(game, width, height);
+	load_enemy_textures(game, width, height);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies_collision.c                                :+:      :+:    :+:   */
+/*   enemies_collision_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:27:13 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:48:22 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:38:56 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	check_player_collision(t_game *game)
 {

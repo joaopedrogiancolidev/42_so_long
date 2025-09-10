@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup_textures.c                                 :+:      :+:    :+:   */
+/*   cleanup_textures_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 23:35:30 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:35:54 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/09 20:56:36 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/09 23:38:52 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	cleanup_player_textures(t_game *game)
 {
@@ -42,6 +42,20 @@ static void	cleanup_collectible_textures(t_game *game)
 	}
 }
 
+static void	cleanup_enemy_textures(t_game *game)
+{
+	if (game->textures.enemies[0])
+	{
+		mlx_destroy_image(game->mlx, game->textures.enemies[0]);
+		game->textures.enemies[0] = NULL;
+	}
+	if (game->textures.enemies[1])
+	{
+		mlx_destroy_image(game->mlx, game->textures.enemies[1]);
+		game->textures.enemies[1] = NULL;
+	}
+}
+
 static void	cleanup_basic_textures(t_game *game)
 {
 	if (game->textures.wall)
@@ -65,7 +79,9 @@ void	cleanup_textures(t_game *game)
 {
 	if (!game || !game->mlx)
 		return ;
+	ft_printf("🧹 Cleaning textures...\n");
 	cleanup_basic_textures(game);
 	cleanup_player_textures(game);
 	cleanup_collectible_textures(game);
+	cleanup_enemy_textures(game);
 }

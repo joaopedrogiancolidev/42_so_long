@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies_movement.c                                 :+:      :+:    :+:   */
+/*   enemies_movement_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:34:44 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:01:34 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:39:06 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 int	can_enemy_move(t_game *game, int x, int y)
 {

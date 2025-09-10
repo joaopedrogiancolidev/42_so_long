@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup_game.c                                     :+:      :+:    :+:   */
+/*   cleanup_game_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 00:14:02 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/10 00:14:15 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/09 20:56:53 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/10 00:14:20 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	cleanup_mlx_resources(t_game *game)
 {
@@ -29,6 +29,11 @@ static void	cleanup_mlx_resources(t_game *game)
 
 static void	cleanup_map_resources(t_game *game)
 {
+	if (game->map && game->map->enemies_data && game->map->enemies > 0)
+	{
+		free(game->map->enemies_data);
+		game->map->enemies_data = NULL;
+	}
 	if (game->map)
 	{
 		free_map(game->map);
@@ -40,7 +45,9 @@ void	cleanup_game(t_game *game)
 {
 	if (!game)
 		return ;
+	ft_printf("🧽 Starting complete game cleanup...\n");
 	cleanup_map_resources(game);
 	cleanup_textures(game);
 	cleanup_mlx_resources(game);
+	ft_printf("✅ Cleaning complete!\n");
 }

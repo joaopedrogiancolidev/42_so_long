@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hud_display.c                                      :+:      :+:    :+:   */
+/*   hud_display_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 00:19:17 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:37:33 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:39:15 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	render_hud_background(t_game *game)
 {

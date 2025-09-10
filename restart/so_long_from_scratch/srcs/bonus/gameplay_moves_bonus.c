@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameplay_moves.c                                   :+:      :+:    :+:   */
+/*   gameplay_moves_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 23:33:05 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:33:12 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/09 21:05:28 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/09 23:39:11 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 int	is_valid_move(t_game *game, int x, int y)
 {
@@ -18,9 +18,16 @@ int	is_valid_move(t_game *game, int x, int y)
 		return (0);
 	if (game->map->grid[y][x] == '1')
 		return (0);
+	if (game->map->grid[y][x] == 'M')
+	{
+		ft_printf("💀 Game Over! Caught by Sans!\n");
+		game->game_over = 1;
+		close_game(game);
+		return (0);
+	}
 	if (game->map->grid[y][x] == 'E' && game->map->collectibles > 0)
 	{
-		ft_printf("Must collect them all! (%d remaining)\n",
+		ft_printf("🚪 Must collect them all! (%d remaining)\n",
 			game->map->collectibles);
 		return (0);
 	}
@@ -34,7 +41,7 @@ void	collect_item(t_game *game, int x, int y)
 		game->map->grid[y][x] = '0';
 		game->collected++;
 		game->map->collectibles--;
-		ft_printf("Collectible collected! (%d left)\n",
+		ft_printf("🎯 Collectible collected! (%d left)\n",
 			game->map->collectibles);
 		game->needs_rerender = 1;
 	}
@@ -42,7 +49,7 @@ void	collect_item(t_game *game, int x, int y)
 
 void	display_move_count(t_game *game)
 {
-	ft_printf("Moves: %d | Collectibles: %d\n",
+	ft_printf("🚶 Moves: %d | Collectibles: %d\n",
 		game->moves, game->map->collectibles);
 }
 
@@ -51,7 +58,7 @@ void	check_win_condition(t_game *game)
 	if (game->map->grid[game->map->player_pos.y][game->map->player_pos.x] == 'E'
 		&& game->map->collectibles == 0)
 	{
-		ft_printf("\n\nYou won! All collectibles in %d moves!\n", game->moves);
+		ft_printf("\n\n✴️ You have DETERMINATION! Total %d moves!\n", game->moves);
 		game->game_over = 1;
 		close_game(game);
 	}

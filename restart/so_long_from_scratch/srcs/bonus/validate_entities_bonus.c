@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 23:46:55 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 23:46:58 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/09/05 15:27:32 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/09/09 23:46:11 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	validate_entities_count(t_map *map)
 {
@@ -39,6 +39,8 @@ static void	count_entities(t_map *map)
 				map->exits++;
 			else if (map->grid[y][x] == 'C')
 				map->collectibles++;
+			else if (map->grid[y][x] == 'M')
+				map->enemies++;
 			x++;
 		}
 		y++;
@@ -50,6 +52,7 @@ void	validate_entities(t_map *map)
 	map->players = 0;
 	map->exits = 0;
 	map->collectibles = 0;
+	map->enemies = 0;
 	count_entities(map);
 	validate_entities_count(map);
 }

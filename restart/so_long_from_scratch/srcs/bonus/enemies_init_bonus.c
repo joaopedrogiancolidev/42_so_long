@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies_init.c                                     :+:      :+:    :+:   */
+/*   enemies_init_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 22:26:40 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:48:57 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:38:59 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 static void	init_single_enemy(t_enemy *enemy, int enemy_count)
 {

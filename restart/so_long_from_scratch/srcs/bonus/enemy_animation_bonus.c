@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_animation.c                                  :+:      :+:    :+:   */
+/*   enemy_animation_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 00:23:52 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 20:40:36 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/10 00:19:54 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 int	get_enemy_sprite_index(t_enemy *enemy)
 {
