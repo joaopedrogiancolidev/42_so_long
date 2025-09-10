@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_movement.c                                   :+:      :+:    :+:   */
+/*   enemies_movement.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/07 20:34:44 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:30:48 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 23:01:34 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	can_enemy_move(t_game *game, int x, int y)
 	if (game->map->grid[y][x] == '1')
 		return (0);
 	if (game->map->grid[y][x] == 'M')
+		return (0);
+	if (game->map->grid[y][x] == 'C')
+		return (0);
+	if (game->map->grid[y][x] == 'E')
 		return (0);
 	return (1);
 }
