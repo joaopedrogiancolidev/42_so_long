@@ -6,7 +6,7 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 21:05:28 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 21:05:34 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/09/09 22:43:47 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	is_valid_move(t_game *game, int x, int y)
 		return (0);
 	if (game->map->grid[y][x] == 'M')
 	{
-		ft_printf("💀 Game Over! Você foi pego por um inimigo!\n");
+		ft_printf("💀 Game Over! Catch by Sans!\n");
 		game->game_over = 1;
+		close_game(game);
 		return (0);
 	}
 	if (game->map->grid[y][x] == 'E' && game->map->collectibles > 0)
@@ -48,7 +49,7 @@ void	collect_item(t_game *game, int x, int y)
 
 void	display_move_count(t_game *game)
 {
-	ft_printf("🚶 Movimentos: %d | Collectibles: %d\n",
+	ft_printf("🚶 Moves: %d | Collectibles: %d\n",
 		game->moves, game->map->collectibles);
 }
 
@@ -57,7 +58,7 @@ void	check_win_condition(t_game *game)
 	if (game->map->grid[game->map->player_pos.y][game->map->player_pos.x] == 'E'
 		&& game->map->collectibles == 0)
 	{
-		ft_printf("🏆 PARABÉNS! Você venceu em %d movimentos!\n", game->moves);
+		ft_printf("🏆 CONGRATZS! You win in %d moves!\n", game->moves);
 		game->game_over = 1;
 		close_game(game);
 	}

@@ -30,7 +30,10 @@ SRC = 	srcs/parser/map_main.c \
 		srcs/gameplay/cleanup_close.c \
 		srcs/gameplay/gameplay_moves.c \
 		srcs/gameplay/gameplay_keys.c \
-		srcs/gameplay/enemy_movement.c 
+		srcs/gameplay/enemies_movement.c \
+		srcs/gameplay/enemies_init.c \
+		srcs/gameplay/enemies_main.c \
+		srcs/gameplay/enemies_collision.c
 
 OBJ = $(SRC:.c=.o)
 
