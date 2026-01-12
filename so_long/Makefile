@@ -5,7 +5,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = ../ft_lib
-FT_PRINTF_DIR = ../ft_printf
+FT_PRINTF_DIR = ../printf
 MLX_DIR = ../minilibx
 INC_DIR = includes
 
