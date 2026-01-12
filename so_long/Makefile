@@ -4,7 +4,7 @@ NAME_BONUS = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFT_DIR = ../libft
+LIBFT_DIR = ../ft_lib
 FT_PRINTF_DIR = ../ft_printf
 MLX_DIR = ../minilibx
 INC_DIR = includes
@@ -72,7 +72,7 @@ $(OBJ_BONUS_DIR)/%.o: srcs/%.c
 	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)/includes -I$(MLX_DIR) -c $< -o $@
 
 libs:
-	@echo "Compilando libft"
+	@echo "Compilando ft_lib"
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory
 	@echo "Compilando ft_printf..."
 	$(MAKE) -C $(FT_PRINTF_DIR) --no-print-directory

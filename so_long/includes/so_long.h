@@ -6,14 +6,14 @@
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 22:22:46 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/10 02:23:55 by jgiancol         ###   ########.fr       */
+/*   Updated: 2025/11/03 13:29:27 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../../libft/libft.h"
+# include "../../ft_lib/libft.h"
 # include "../../ft_printf/includes/ft_printf.h"
 # include "../../minilibx/mlx.h" 
 # include <stdio.h>

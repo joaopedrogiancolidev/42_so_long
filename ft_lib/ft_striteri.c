@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies_main.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgiancol <jgiancol@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 22:27:27 by jgiancol          #+#    #+#             */
-/*   Updated: 2025/09/09 22:49:09 by jgiancol         ###   ########.fr       */
+/*   Created: 2025/07/28 13:52:16 by jgiancol          #+#    #+#             */
+/*   Updated: 2025/07/28 13:53:21 by jgiancol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "libft.h"
 
-void	move_enemies(t_game *game)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	static int	enemy_move_counter = 0;
-	int			i;
+	unsigned int	i;
 
-	enemy_move_counter++;
-	if (enemy_move_counter < 600)
-		return ;
-	enemy_move_counter = 0;
-	if (!game || !game->map)
-		return ;
-	if (game->map->enemies == 0 || !game->map->enemies_data)
+	if (!s || !f)
 		return ;
 	i = 0;
-	while (i < game->map->enemies)
+	while (s[i])
 	{
-		move_single_enemy(game, i);
+		f(i, &s[i]);
 		i++;
 	}
-	check_player_collision(game);
-	game->needs_rerender = 1;
 }
